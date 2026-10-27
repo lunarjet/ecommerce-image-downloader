@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="图猎 EcomHunter — 电商图片一键下载插件，支持淘宝、京东、拼多多等多平台智能识别，批量下载高清原图。">
+    <title>图猎 EcomHunter — 电商图片一键下载插件</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- ========== 顶部导航栏 ========== -->
+    <header id="navbar" class="navbar">
+        <div class="container nav-container">
+            <!-- Logo -->
+            <a href="#home" class="logo">
+                <span class="logo-icon">🎯</span>
+                <span class="logo-text">图猎 <span class="logo-highlight">EcomHunter</span></span>
+            </a>
+
+            <!-- 桌面端导航链接 -->
+            <nav class="nav-links" id="navLinks">
+                <a href="#home" class="nav-link">首页</a>
+                <a href="#features" class="nav-link">功能</a>
+                <a href="#steps" class="nav-link">使用步骤</a>
+                <a href="#download" class="nav-link">下载</a>
+                <a href="#about" class="nav-link">关于</a>
+                <a href="#download" class="btn btn-primary nav-cta">立即下载</a>
+            </nav>
+
+            <!-- 移动端汉堡菜单按钮 -->
+            <button class="hamburger" id="hamburger" aria-label="菜单">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- ========== Hero 区 ========== -->
+    <section id="home" class="hero">
+        <div class="container hero-container">
+            <!-- 左侧文案 -->
+            <div class="hero-content">
+                <h1 class="hero-title">电商图片，<br><span class="highlight">一键全收</span></h1>
+                <p class="hero-subtitle">
+                    图猎 EcomHunter 是一款专为电商从业者打造的 Chrome 扩展。<br>
+                    智能识别淘宝、京东、拼多多、亚马逊等主流平台的商品图片，<br>
+                    批量下载高清原图，告别手动右键保存的低效时光。
+                </p>
+                <div class="hero-cta">
+                    <a href="#download" class="btn btn-primary btn-lg">⚡ 立即下载</a>
+                    <a href="#features" class="btn btn-outline btn-lg">查看功能 →</a>
+                </div>
+                <div class="hero-meta">
+                    <span>✅ 完全免费</span>
+                    <span>✅ 无需注册</span>
+                    <span>✅ 本地处理，隐私安全</span>
+                </div>
+            </div>
+
+            <!-- 右侧截图占位 -->
+            <div class="hero-visual">
+                <div class="screenshot-placeholder">
+                    <div class="browser-frame">
+                        <div class="browser-bar">
+                            <span class="dot dot-red"></span>
+                            <span class="dot dot-yellow"></span>
+                            <span class="dot dot-green"></span>
+                            <span class="browser-url">chrome-extension://ecomhunter/popup.html</span>
+                        </div>
+                        <div class="browser-content">
+                            <div class="extension-popup">
+                                <div class="popup-header">🎯 图猎 EcomHunter</div>
+                                <div class="popup-stats">
+                                    <div class="stat-item"><span class="stat-num">28</span><span class="stat-label">已识别</span></div>
+                                    <div class="stat-item"><span class="stat-num">24</span><span class="stat-label">高清原图</span></div>
+                                </div>
+                                <div class="popup-thumbnails">
+                                    <div class="thumb"></div><div class="thumb"></div><div class="thumb"></div>
+                                    <div class="thumb"></div><div class="thumb"></div><div class="thumb"></div>
+                                </div>
+                                <button class="popup-btn">📦 批量下载 ZIP</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== 功能介绍区 ========== -->
+    <section id="features" class="features">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">为什么选择图猎？</h2>
+                <p class="section-subtitle">三大核心能力，让电商图片采集变得前所未有的简单</p>
+            </div>
+
+            <div class="features-grid">
+                <!-- 功能卡片 1 -->
+                <div class="feature-card">
+                    <div class="feature-icon icon-blue">🌐</div>
+                    <h3 class="feature-title">智能识别多平台</h3>
+                    <p class="feature-desc">
+                        自动适配淘宝、天猫、京东、拼多多、亚马逊、速卖通等主流电商平台，
+                        打开商品页即自动识别所有展示图片，无需手动筛选。
+                    </p>
+                </div>
+
+                <!-- 功能卡片 2 -->
+                <div class="feature-card">
+                    <div class="feature-icon icon-green">📦</div>
+                    <h3 class="feature-title">批量下载 ZIP</h3>
+                    <p class="feature-desc">
+                        一键将所有选中的图片打包为 ZIP 压缩包下载，
+                        自动按商品 ID 分类命名，省去逐张保存和整理的麻烦。
+                    </p>
+                </div>
+
+                <!-- 功能卡片 3 -->
+                <div class="feature-card">
+                    <div class="feature-icon icon-purple">🔍</div>
+                    <h3 class="feature-title">支持懒加载高清原图</h3>
+                    <p class="feature-desc">
+                        智能追踪页面懒加载的图片资源，
+                        自动替换缩略图为原始分辨率大图，最高支持 4K 超清原图下载。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== 使用步骤区 ========== -->
+    <section id="steps" class="steps">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">三步搞定，零学习成本</h2>
+                <p class="section-subtitle">从安装到下载，不超过 30 秒</p>
+            </div>
+
+            <div class="steps-grid">
+                <!-- 步骤 1 -->
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <div class="step-icon">🛠️</div>
+                    <h3 class="step-title">安装插件</h3>
+                    <p class="step-desc">
+                        从 Chrome 应用商店或下载 CRX 文件，
+                        拖入浏览器扩展页面完成安装，秒级就绪。
+                    </p>
+                </div>
+
+                <!-- 箭头 1 -->
+                <div class="step-arrow step-arrow-1">→</div>
+
+                <!-- 步骤 2 -->
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <div class="step-icon">🛒</div>
+                    <h3 class="step-title">打开电商页面</h3>
+                    <p class="step-desc">
+                        访问任意电商平台的商品详情页，
+                        浏览你想要采集图片的商品，插件自动开始识别。
+                    </p>
+                </div>
+
+                <!-- 箭头 2 -->
+                <div class="step-arrow step-arrow-2">→</div>
+
+                <!-- 步骤 3 -->
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <div class="step-icon">📥</div>
+                    <h3 class="step-title">点击图标下载</h3>
+                    <p class="step-desc">
+                        点击浏览器工具栏上的图猎图标，
+                        勾选需要的图片，一键打包下载到本地。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== 下载区 ========== -->
+    <section id="download" class="download">
+        <div class="container download-container">
+            <h2 class="download-title">准备好提升你的工作效率了吗？</h2>
+            <p class="download-subtitle">立即安装图猎 EcomHunter，开启电商图片采集的新体验</p>
+
+            <a href="download/ecomhunter.zip" class="btn btn-primary btn-download">
+                <span class="download-icon">⬇️</span>
+                <span class="download-text">
+                    <strong>下载 Chrome 扩展</strong>
+                    <small>适用于 Chrome / Edge / 360 浏览器</small>
+                </span>
+            </a>
+
+            <div class="download-meta">
+                <span>📌 当前版本：v1.0.0</span>
+                <span>📦 文件大小：约 850 KB</span>
+                <span>🗓️ 更新日期：2026-10-27</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== 关于 & 页脚 ========== -->
+    <footer id="about" class="footer">
+        <div class="container footer-container">
+            <div class="footer-brand">
+                <span class="logo-icon">🎯</span>
+                <span class="logo-text">图猎 <span class="logo-highlight">EcomHunter</span></span>
+                <p class="footer-slogan">让每一张电商图片，都逃不过你的掌心。</p>
+            </div>
+
+            <div class="footer-links">
+                <h4>产品</h4>
+                <a href="#features">功能介绍</a>
+                <a href="#download">下载扩展</a>
+                <a href="#">更新日志</a>
+            </div>
+
+            <div class="footer-links">
+                <h4>支持</h4>
+                <a href="#">使用教程</a>
+                <a href="#">常见问题</a>
+                <a href="#">反馈建议</a>
+            </div>
+
+            <div class="footer-links">
+                <h4>开源</h4>
+                <a href="https://github.com/lunarjet/ecommerce-image-downloader" target="_blank" rel="noopener">
+                    <span class="github-icon">🐙</span> GitHub 仓库
+                </a>
+                <a href="#">开源协议：MIT</a>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="container">
+                <p>© 2026 图猎 EcomHunter. All rights reserved.</p>
+                <p class="footer-credit">Made with ❤️ for 电商从业者</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ========== JavaScript ========== -->
+    <script src="js/main.js"></script>
+</body>
+</html>

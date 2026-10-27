@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="stylesheet" href="popup.css" />
+  <title>电商图片下载器</title>
+</head>
+<body>
+  <!-- 顶部标题栏 -->
+  <header class="header">
+    <div class="title">
+      <div class="logo">📦</div>
+      <div class="title-text">
+        <h1>电商图片下载器</h1>
+        <p id="subtitle">正在加载…</p>
+      </div>
+    </div>
+    <button id="settingsBtn" class="icon-btn" title="设置">⚙️</button>
+  </header>
+
+  <!-- 设置面板（默认隐藏） -->
+  <div id="settingsPanel" class="settings hidden">
+    <label class="setting-item">
+      <input type="checkbox" id="onlyLarge" />
+      <span>仅抓大图（≥ 800px）</span>
+    </label>
+  </div>
+
+  <!-- 统计条 -->
+  <section class="stats">
+    <div class="stat-item">
+      <div class="stat-num" id="imgCount">0</div>
+      <div class="stat-label">已抓取图片</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num" id="productName">—</div>
+      <div class="stat-label">商品名称</div>
+    </div>
+  </section>
+
+  <!-- 图片网格 -->
+  <main class="grid-wrap">
+    <div id="grid" class="grid">
+      <div class="empty" id="emptyTip">
+        <div class="empty-icon">🖼️</div>
+        <div class="empty-text">暂无图片<br/>请在电商详情页打开本插件</div>
+      </div>
+    </div>
+  </main>
+
+  <!-- 底部按钮 -->
+  <footer class="footer">
+    <button id="refreshBtn" class="btn btn-secondary">🔄 刷新扫描</button>
+    <button id="zipBtn" class="btn btn-primary">💾 全部下载 ZIP</button>
+  </footer>
+
+  <!-- 加载遮罩 -->
+  <div id="loading" class="loading hidden">
+    <div class="spinner"></div>
+    <div id="loadingText">正在打包…</div>
+  </div>
+
+  <!-- 错误提示 -->
+  <div id="toast" class="toast hidden"></div>
+
+  <!-- JSZip CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>

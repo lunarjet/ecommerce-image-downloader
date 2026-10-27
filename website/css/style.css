@@ -1,0 +1,930 @@
+/* ============================================================
+   图猎 EcomHunter — 官网样式表
+   纯手写 CSS，无任何外部框架依赖
+   主色调：#2563eb (蓝) + #ffffff (白)
+   ============================================================ */
+
+/* ---------- 1. 全局重置与基础变量 ---------- */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* CSS 自定义属性：颜色、字号、间距 */
+:root {
+    --primary: #2563eb;           /* 主蓝 */
+    --primary-dark: #1d4ed8;      /* 深蓝 */
+    --primary-light: #dbeafe;     /* 浅蓝背景 */
+    --accent-green: #10b981;      /* 功能卡片 2 点缀 */
+    --accent-purple: #8b5cf6;     /* 功能卡片 3 点缀 */
+    --text-dark: #1e293b;         /* 主文字色 */
+    --text-gray: #64748b;         /* 次要文字色 */
+    --text-light: #94a3b8;        /* 辅助文字色 */
+    --bg-white: #ffffff;
+    --bg-light: #f8fafc;          /* 浅灰背景 */
+    --border-color: #e2e8f0;
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.06);
+    --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.08);
+    --shadow-lg: 0 12px 40px rgba(37, 99, 235, 0.15);
+    --radius: 12px;
+    --radius-sm: 8px;
+    --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --max-width: 1200px;
+}
+
+html {
+    /* 平滑滚动 */
+    scroll-behavior: smooth;
+    font-size: 16px;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+                 "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei",
+                 "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: var(--text-dark);
+    background: var(--bg-white);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button {
+    cursor: pointer;
+    font-family: inherit;
+    border: none;
+    background: none;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+/* 通用容器 */
+.container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+/* ---------- 2. 按钮样式 ---------- */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 28px;
+    font-size: 15px;
+    font-weight: 600;
+    border-radius: var(--radius-sm);
+    transition: all var(--transition);
+    cursor: pointer;
+    white-space: nowrap;
+    text-align: center;
+}
+
+.btn-lg {
+    padding: 16px 36px;
+    font-size: 16px;
+}
+
+.btn-primary {
+    background: var(--primary);
+    color: #fff;
+    box-shadow: 0 2px 8px rgba(37, 99, 235, 0.3);
+}
+
+.btn-primary:hover {
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4);
+}
+
+.btn-primary:active {
+    transform: translateY(0);
+}
+
+.btn-outline {
+    background: transparent;
+    color: var(--primary);
+    border: 2px solid var(--primary);
+}
+
+.btn-outline:hover {
+    background: var(--primary);
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(37, 99, 235, 0.25);
+}
+
+/* ---------- 3. 顶部导航栏 ---------- */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    padding: 16px 0;
+    background: rgba(255, 255, 255, 1);
+    transition: all var(--transition);
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.04);
+}
+
+/* 滚动后导航栏效果（JS 添加 .scrolled 类） */
+.navbar.scrolled {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: var(--shadow-sm);
+    padding: 10px 0;
+}
+
+.nav-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Logo */
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text-dark);
+}
+
+.logo-icon {
+    font-size: 24px;
+}
+
+.logo-highlight {
+    color: var(--primary);
+}
+
+/* 导航链接 */
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+}
+
+.nav-link {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--text-gray);
+    transition: color var(--transition);
+    position: relative;
+}
+
+.nav-link:hover {
+    color: var(--primary);
+}
+
+/* 下载按钮与导航链接之间的间距 */
+.nav-cta {
+    margin-left: 8px;
+    padding: 10px 22px;
+}
+
+/* 汉堡菜单按钮（默认隐藏，移动端显示） */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    padding: 8px;
+}
+
+.hamburger-line {
+    width: 24px;
+    height: 2px;
+    background: var(--text-dark);
+    border-radius: 2px;
+    transition: all var(--transition);
+}
+
+/* 汉堡菜单激活状态（JS 添加 .active 类） */
+.hamburger.active .hamburger-line:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+
+.hamburger.active .hamburger-line:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active .hamburger-line:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+}
+
+/* ---------- 4. Hero 区 ---------- */
+.hero {
+    padding: 140px 0 80px;
+    background: linear-gradient(180deg, #eff6ff 0%, #ffffff 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Hero 背景装饰圆点 */
+.hero::before {
+    content: "";
+    position: absolute;
+    top: -100px;
+    right: -100px;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(37, 99, 235, 0.12) 0%, transparent 70%);
+    border-radius: 50%;
+    z-index: 0;
+}
+
+.hero::after {
+    content: "";
+    position: absolute;
+    bottom: -150px;
+    left: -150px;
+    width: 350px;
+    height: 350px;
+    background: radial-gradient(circle, rgba(37, 99, 235, 0.08) 0%, transparent 70%);
+    border-radius: 50%;
+    z-index: 0;
+}
+
+.hero-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+}
+
+/* Hero 左侧文案 */
+.hero-title {
+    font-size: 48px;
+    font-weight: 800;
+    line-height: 1.2;
+    color: var(--text-dark);
+    margin-bottom: 20px;
+}
+
+.hero-title .highlight {
+    background: linear-gradient(135deg, var(--primary) 0%, #60a5fa 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.hero-subtitle {
+    font-size: 17px;
+    color: var(--text-gray);
+    line-height: 1.8;
+    margin-bottom: 32px;
+}
+
+.hero-cta {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 28px;
+    flex-wrap: wrap;
+}
+
+.hero-meta {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+    font-size: 13px;
+    color: var(--text-light);
+}
+
+.hero-meta span {
+    background: #fff;
+    padding: 6px 14px;
+    border-radius: 100px;
+    box-shadow: var(--shadow-sm);
+}
+
+/* Hero 右侧视觉（浏览器插件占位图） */
+.hero-visual {
+    display: flex;
+    justify-content: center;
+}
+
+.screenshot-placeholder {
+    width: 100%;
+    max-width: 480px;
+    filter: drop-shadow(0 20px 50px rgba(37, 99, 235, 0.2));
+}
+
+.browser-frame {
+    background: #fff;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+}
+
+.browser-bar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 16px;
+    background: #f1f5f9;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.dot-red { background: #ef4444; }
+.dot-yellow { background: #f59e0b; }
+.dot-green { background: #10b981; }
+
+.browser-url {
+    flex: 1;
+    margin-left: 8px;
+    font-size: 12px;
+    color: var(--text-gray);
+    background: #fff;
+    padding: 4px 12px;
+    border-radius: 20px;
+}
+
+.browser-content {
+    padding: 24px;
+    background: linear-gradient(135deg, #f8fafc 0%, #eef2ff 100%);
+}
+
+/* 插件弹窗模拟 */
+.extension-popup {
+    background: #fff;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: var(--shadow-md);
+}
+
+.popup-header {
+    font-weight: 700;
+    font-size: 16px;
+    color: var(--text-dark);
+    margin-bottom: 16px;
+    text-align: center;
+}
+
+.popup-stats {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 16px;
+    padding: 12px;
+    background: var(--primary-light);
+    border-radius: 8px;
+}
+
+.stat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.stat-num {
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--primary);
+}
+
+.stat-label {
+    font-size: 12px;
+    color: var(--text-gray);
+}
+
+.popup-thumbnails {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    margin-bottom: 16px;
+}
+
+.thumb {
+    aspect-ratio: 1;
+    background: linear-gradient(135deg, #60a5fa 0%, #2563eb 100%);
+    border-radius: 6px;
+    opacity: 0.85;
+}
+
+.thumb:nth-child(2) { background: linear-gradient(135deg, #34d399 0%, #10b981 100%); }
+.thumb:nth-child(3) { background: linear-gradient(135deg, #a78bfa 0%, #8b5cf6 100%); }
+.thumb:nth-child(5) { background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%); }
+.thumb:nth-child(6) { background: linear-gradient(135deg, #f472b6 0%, #ec4899 100%); }
+
+.popup-btn {
+    width: 100%;
+    padding: 12px;
+    background: var(--primary);
+    color: #fff;
+    font-weight: 600;
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+/* ---------- 5. 功能介绍区 ---------- */
+.features {
+    padding: 100px 0;
+    background: var(--bg-white);
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.section-title {
+    font-size: 36px;
+    font-weight: 800;
+    color: var(--text-dark);
+    margin-bottom: 12px;
+}
+
+.section-subtitle {
+    font-size: 16px;
+    color: var(--text-gray);
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+}
+
+.feature-card {
+    background: var(--bg-white);
+    border-radius: var(--radius);
+    padding: 40px 32px;
+    text-align: center;
+    transition: all var(--transition);
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-sm);
+}
+
+.feature-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-lg);
+    border-color: transparent;
+}
+
+.feature-icon {
+    width: 72px;
+    height: 72px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 36px;
+    margin: 0 auto 20px;
+    transition: transform var(--transition);
+}
+
+.feature-card:hover .feature-icon {
+    transform: scale(1.1) rotate(-3deg);
+}
+
+.icon-blue {
+    background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+}
+
+.icon-green {
+    background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+}
+
+.icon-purple {
+    background: linear-gradient(135deg, #ede9fe 0%, #ddd6fe 100%);
+}
+
+.feature-title {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: var(--text-dark);
+}
+
+.feature-desc {
+    font-size: 14px;
+    color: var(--text-gray);
+    line-height: 1.8;
+}
+
+/* ---------- 6. 使用步骤区 ---------- */
+.steps {
+    padding: 100px 0;
+    background: var(--bg-light);
+}
+
+.steps-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 24px;
+    align-items: center;
+}
+
+.step-card {
+    grid-column: span 2;
+    background: #fff;
+    border-radius: var(--radius);
+    padding: 36px 28px;
+    text-align: center;
+    box-shadow: var(--shadow-md);
+    transition: all var(--transition);
+    position: relative;
+    overflow: hidden;
+}
+
+.step-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary) 0%, #60a5fa 100%);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform var(--transition);
+}
+
+.step-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-lg);
+}
+
+.step-card:hover::before {
+    transform: scaleX(1);
+}
+
+.step-number {
+    position: absolute;
+    top: 12px;
+    right: 16px;
+    width: 32px;
+    height: 32px;
+    background: var(--primary-light);
+    color: var(--primary);
+    font-weight: 700;
+    font-size: 14px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.step-icon {
+    font-size: 48px;
+    margin-bottom: 16px;
+}
+
+.step-title {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: var(--text-dark);
+}
+
+.step-desc {
+    font-size: 14px;
+    color: var(--text-gray);
+    line-height: 1.7;
+}
+
+/* 步骤间箭头 */
+.step-arrow {
+    grid-column: span 1;
+    text-align: center;
+    font-size: 32px;
+    color: var(--primary);
+    font-weight: bold;
+    animation: bounceArrow 2s ease-in-out infinite;
+}
+
+@keyframes bounceArrow {
+    0%, 100% { transform: translateX(0); }
+    50% { transform: translateX(8px); }
+}
+
+/* ---------- 7. 下载区 ---------- */
+.download {
+    padding: 120px 0;
+    background: linear-gradient(135deg, var(--primary) 0%, #4f8cff 100%);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+/* 下载区装饰 */
+.download::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -20%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+    border-radius: 50%;
+}
+
+.download-container {
+    position: relative;
+    z-index: 1;
+}
+
+.download-title {
+    font-size: 36px;
+    font-weight: 800;
+    color: #fff;
+    margin-bottom: 12px;
+}
+
+.download-subtitle {
+    font-size: 17px;
+    color: rgba(255, 255, 255, 0.85);
+    margin-bottom: 40px;
+}
+
+.btn-download {
+    background: #fff;
+    color: var(--primary);
+    padding: 20px 48px;
+    font-size: 17px;
+    gap: 16px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+}
+
+.btn-download:hover {
+    background: #f0f9ff;
+    color: var(--primary-dark);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
+}
+
+.download-icon {
+    font-size: 28px;
+}
+
+.download-text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+}
+
+.download-text strong {
+    font-size: 17px;
+}
+
+.download-text small {
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--text-gray);
+}
+
+.download-meta {
+    margin-top: 32px;
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    flex-wrap: wrap;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* ---------- 8. 页脚 ---------- */
+.footer {
+    background: #0f172a;
+    color: #cbd5e1;
+    padding: 72px 0 0;
+}
+
+.footer-container {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: 48px;
+    padding-bottom: 48px;
+}
+
+.footer-brand .logo-text {
+    color: #fff;
+}
+
+.footer-slogan {
+    margin-top: 16px;
+    font-size: 14px;
+    color: var(--text-light);
+}
+
+.footer-links h4 {
+    color: #fff;
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 16px;
+}
+
+.footer-links a {
+    display: block;
+    font-size: 14px;
+    color: var(--text-light);
+    margin-bottom: 10px;
+    transition: color var(--transition);
+}
+
+.footer-links a:hover {
+    color: #60a5fa;
+}
+
+.github-icon {
+    margin-right: 4px;
+}
+
+.footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 24px 0;
+    text-align: center;
+    font-size: 13px;
+    color: var(--text-light);
+}
+
+.footer-bottom .container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.footer-credit {
+    opacity: 0.8;
+}
+
+/* ============================================================
+   响应式：媒体查询
+   断点：< 768px（平板 & 移动端）
+   ============================================================ */
+@media screen and (max-width: 992px) {
+    /* Hero 区改为上下布局 */
+    .hero-container {
+        grid-template-columns: 1fr;
+        gap: 48px;
+        text-align: center;
+    }
+
+    .hero-cta,
+    .hero-meta {
+        justify-content: center;
+    }
+
+    /* 步骤区：两列 + 箭头隐藏 */
+    .steps-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .step-card {
+        grid-column: span 1;
+    }
+
+    .step-arrow {
+        display: none;
+    }
+
+    /* 页脚：两列 */
+    .footer-container {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    /* 汉堡菜单显示 */
+    .hamburger {
+        display: flex;
+    }
+
+    /* 导航链接默认隐藏，移动端下拉 */
+    .nav-links {
+        position: fixed;
+        top: 64px;
+        left: 0;
+        right: 0;
+        background: #fff;
+        flex-direction: column;
+        padding: 24px;
+        gap: 16px;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+        transform: translateY(-120%);
+        transition: transform var(--transition);
+    }
+
+    /* 菜单激活（JS 添加 .open 类） */
+    .nav-links.open {
+        transform: translateY(0);
+    }
+
+    .nav-cta {
+        margin-left: 0;
+        width: 100%;
+    }
+
+    /* Hero 区 */
+    .hero {
+        padding: 120px 0 60px;
+    }
+
+    .hero-title {
+        font-size: 36px;
+    }
+
+    .hero-subtitle {
+        font-size: 15px;
+    }
+
+    .btn-lg {
+        padding: 14px 28px;
+        font-size: 15px;
+    }
+
+    /* 功能区：单列 */
+    .features {
+        padding: 60px 0;
+    }
+
+    .section-title {
+        font-size: 28px;
+    }
+
+    .features-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    /* 步骤区：单列 */
+    .steps {
+        padding: 60px 0;
+    }
+
+    .steps-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* 下载区 */
+    .download {
+        padding: 80px 0;
+    }
+
+    .download-title {
+        font-size: 26px;
+    }
+
+    .download-meta {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    /* 页脚：单列 */
+    .footer {
+        padding-top: 48px;
+    }
+
+    .footer-container {
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+
+    .footer-bottom .container {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .hero-title {
+        font-size: 30px;
+    }
+
+    .section-title {
+        font-size: 24px;
+    }
+
+    .hero-cta {
+        flex-direction: column;
+    }
+
+    .hero-cta .btn {
+        width: 100%;
+    }
+}
